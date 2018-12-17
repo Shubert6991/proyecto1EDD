@@ -2,8 +2,23 @@
 // For more information, please visit: https://github.com/loentar/ngrest
 
 #include "proyecto1EDD.h"
+ListaUsuarios lUsuarios;
 
 std::string proyecto1EDD::echo(const std::string& text)
 {
     return "Hello there, " + text;
+}
+
+std::string proyecto1EDD::newuser(Usuario& user)
+{
+  std::string r;
+  lUsuarios.insertarOrdenado(user);
+  r = "usuario creado correctamente";
+  return r;
+}
+
+std::list<Usuario> proyecto1EDD::getusuarios()
+{
+  std::list<Usuario> usuarios = lUsuarios.getList();
+  return usuarios;
 }

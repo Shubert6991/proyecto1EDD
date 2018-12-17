@@ -1,5 +1,9 @@
 #include "ListaUsuarios.h"
 
+ListaUsuarios::ListaUsuarios(){
+  inicio = fin = NULL;
+}
+
 NodoUsuario* ListaUsuarios::buscar(std::string s){
   NodoUsuario* tmp = inicio;
   while (tmp!=NULL) {
@@ -9,10 +13,6 @@ NodoUsuario* ListaUsuarios::buscar(std::string s){
       tmp = tmp->getSiguiente();
   }
   return NULL;
-}
-
-ListaUsuarios::ListaUsuarios(){
-  inicio = fin = NULL;
 }
 
 void ListaUsuarios::insertarAlInicio(Usuario u){
@@ -51,7 +51,7 @@ void ListaUsuarios::insertarOrdenado(Usuario u){
       insertarAlInicio(u);
     }
     //si va despues que el ultimo
-    else if(u.nombre > fin.getNombre()){
+    else if(u.nombre > fin -> getNombre()){
       insertarAlFinal(u);
     }
     //si va en el medio
@@ -59,7 +59,7 @@ void ListaUsuarios::insertarOrdenado(Usuario u){
       NodoUsuario* tmp = inicio -> getSiguiente();
       //nodo anterior
       NodoUsuario* tmp2 = inicio;
-      while(tmp.getNombre() < u.nombre){
+      while(tmp -> getNombre() < u.nombre){
         tmp = tmp -> getSiguiente();
         tmp2 = tmp2 ->getSiguiente();
       }
@@ -78,8 +78,8 @@ bool ListaUsuarios::estaVacia() {
   return false;
 }
 
-Usuario ListaUsuarios::getUser(std::string id){
-  Usuario result = {"","","",""};
+Usuario ListaUsuarios::getUsuario(std::string id){
+  Usuario result = {"",""};
     NodoUsuario * search = buscar(id);
     if(search!=NULL){
         return search->getUser();
@@ -90,11 +90,11 @@ Usuario ListaUsuarios::getUser(std::string id){
 std::list<Usuario> ListaUsuarios::getList(){
   std::list<Usuario> lista;
   NodoUsuario* tmp = inicio;
-
-  while (tmp->getSiguiente() != inicio && !estaVacia()) {
-    lista.push_back(tmp -> getUser());
-    tmp = tmp -> getSiguiente();
+  if(!estaVacia()){
+    while (tmp->getSiguiente() != inicio) {
+      lista.push_back(tmp -> getUser());
+      tmp = tmp -> getSiguiente();
+    }
   }
-
   return lista;
 }

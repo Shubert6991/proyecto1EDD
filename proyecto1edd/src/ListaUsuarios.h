@@ -19,6 +19,6 @@ public:
   Usuario getUsuario(std::string id);
   bool estaVacia();
   std::list<Usuario> getList();
-}
+};
 
 #endif //LISTAUSUARIOS_H

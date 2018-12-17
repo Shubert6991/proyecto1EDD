@@ -3,6 +3,9 @@
 
 #ifndef PROYECTO1EDD_H
 #define PROYECTO1EDD_H
+#include <string>
+
+#include "ListaUsuarios.h"
 
 #include <ngrest/common/Service.h>
 // '*location' comment sets resource path for this service
@@ -14,6 +17,14 @@ public:
     // *method: GET
     //
     std::string echo(const std::string& text);
+
+    //*method: POST
+    //*location: /newuser
+    std::string newuser(Usuario& user);
+
+    //*method: GET
+    //*location: /getusuarios
+    std::list<Usuario> getusuarios();
 };
 
 

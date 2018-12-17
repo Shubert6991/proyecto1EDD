@@ -26,7 +26,6 @@ public:
   std::string getNombre();
   std::string getDireccion();
   int getTelefono();
-
-}
+};
 
 #endif  //NODOUSUARIO_H
