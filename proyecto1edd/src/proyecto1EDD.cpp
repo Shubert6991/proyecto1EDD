@@ -5,6 +5,5 @@
 
 std::string proyecto1EDD::echo(const std::string& text)
 {
-    return "Hi, " + text;
+    return "Hello there, " + text;
 }
-

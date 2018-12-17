@@ -5,24 +5,11 @@
 #define PROYECTO1EDD_H
 
 #include <ngrest/common/Service.h>
-
-//! Dummy description for the service
-/*! Some detailed description of the service */
 // '*location' comment sets resource path for this service
 // *location: proyecto1edd
 class proyecto1EDD: public ngrest::Service
 {
 public:
-    // Here is an example of service operation
-    //! Dummy description for the operation
-    /*! Some detailed description of the operation */
-    // To invoke this operation from browser open: http://localhost:9098/proyecto1edd/World!
-    //
-    // '*location' metacomment sets path to operation relative to service operation.
-    // Default value is operation name.
-    // This will bind "echo" method to resource path: http://host:port/proyecto1edd/{text}
-    // *location: /{text}
-    //
     // '*method' metacomment sets HTTP method for the operation. GET is default method.
     // *method: GET
     //
@@ -31,6 +18,3 @@ public:
 
 
 #endif // PROYECTO1EDD_H
-
-
-
