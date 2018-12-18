@@ -19,8 +19,8 @@ public:
   NodoTratamiento(Tratamiento t,NodoTratamiento *s,NodoTratamiento *a);
   //metodos
   Tratamiento getTratamiento();
-  NodoUsuario* getSiguiente();
-  NodoUsuario* getAnterior();
+  NodoTratamiento* getSiguiente();
+  NodoTratamiento* getAnterior();
   void setSiguiente(NodoTratamiento *s);
   void setAnterior(NodoTratamiento *a);
   std::string getIdentificador();

@@ -21,3 +21,35 @@ NodoTratamiento::NodoTratamiento(Tratamiento t,NodoTratamiento *s,NodoTratamient
   siguiente = s;
   anterior = a;
 }
+
+Tratamiento NodoTratamiento::getTratamiento(){
+  return trat;
+}
+
+NodoTratamiento* NodoTratamiento::getSiguiente(){
+  return siguiente;
+}
+
+NodoTratamiento* NodoTratamiento::getAnterior(){
+  return anterior;
+}
+
+void NodoTratamiento::setSiguiente(NodoTratamiento* s){
+  siguiente = s;
+}
+
+void NodoTratamiento::setAnterior(NodoTratamiento* a){
+  anterior = a;
+}
+
+std::string NodoTratamiento::getIdentificador(){
+  return trat.identificador;
+}
+
+std::string NodoTratamiento::getNombre(){
+  return trat.nombre;
+}
+
+unsigned float getCosto(){
+  return trat.costo;
+}
