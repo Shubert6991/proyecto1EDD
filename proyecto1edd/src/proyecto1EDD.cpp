@@ -22,3 +22,12 @@ std::list<Usuario> proyecto1EDD::getusuarios()
   std::list<Usuario> usuarios = lUsuarios.getList();
   return usuarios;
 }
+
+std::string proyecto1EDD::login(std::string username,std::string password){
+ std::string res = "no";
+  Usuario uname = lUsuarios.getUsuario(username);
+  if(uname.nombre == password){
+    res = "si";
+  }
+  return res;
+}

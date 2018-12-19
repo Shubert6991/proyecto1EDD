@@ -50,6 +50,6 @@ std::string NodoTratamiento::getNombre(){
   return trat.nombre;
 }
 
-unsigned float getCosto(){
+float NodoTratamiento::getCosto(){
   return trat.costo;
 }

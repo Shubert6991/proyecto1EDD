@@ -91,10 +91,10 @@ std::list<Usuario> ListaUsuarios::getList(){
   std::list<Usuario> lista;
   NodoUsuario* tmp = inicio;
   if(!estaVacia()){
-    while (tmp->getSiguiente() != inicio) {
+    do {
       lista.push_back(tmp -> getUser());
       tmp = tmp -> getSiguiente();
-    }
+    } while(tmp != inicio);
   }
   return lista;
 }

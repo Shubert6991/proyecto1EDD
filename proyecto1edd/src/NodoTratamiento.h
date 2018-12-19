@@ -5,7 +5,7 @@
 struct Tratamiento {
   std::string identificador;
   std::string nombre;
-  unsigned float costo;
+  float costo;
 };
 
 class NodoTratamiento {
@@ -25,6 +25,6 @@ public:
   void setAnterior(NodoTratamiento *a);
   std::string getIdentificador();
   std::string getNombre();
-  unsigned float getCosto();
-}
+  float getCosto();
+};
 #endif//NODOTRATAMIENTO_H

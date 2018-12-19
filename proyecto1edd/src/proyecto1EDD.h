@@ -25,6 +25,10 @@ public:
     //*method: GET
     //*location: /getusuarios
     std::list<Usuario> getusuarios();
+
+    //*method: POST
+    //*location: /login
+    std::string login(std::string username, std::string password);
 };
 
 

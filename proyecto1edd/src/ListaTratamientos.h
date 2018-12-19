@@ -15,5 +15,5 @@ public:
   Tratamiento getTratamiento(std::string id);
   bool estaVacia();
   std::list<Tratamiento> getList();
-}
+};
 #endif //LISTATRATAMIENTOS_H
