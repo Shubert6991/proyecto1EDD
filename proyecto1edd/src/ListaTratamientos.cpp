@@ -6,12 +6,13 @@ ListaTratamientos::ListaTratamientos(){
 
 NodoTratamiento* ListaTratamientos::buscar(std::string s){
   NodoTratamiento* tmp = inicio;
-  while (tmp!=NULL) {
-    if (tmp->getIdentificador()==s) {
-      return tmp;
-    }
-    tmp = tmp -> getSiguiente();
-  }
+  if(!estaVacia()){
+    do {
+      if(tmp->getIdentificador()==s){
+          return tmp;
+      }
+      tmp = tmp->getSiguiente();
+    } while(tmp != inicio);
   return NULL;
 }
 

@@ -6,12 +6,13 @@ ListaUsuarios::ListaUsuarios(){
 
 NodoUsuario* ListaUsuarios::buscar(std::string s){
   NodoUsuario* tmp = inicio;
-  while (tmp!=NULL) {
+  if(!estaVacia()){
+    do {
       if(tmp->getIdentificador()==s){
           return tmp;
       }
       tmp = tmp->getSiguiente();
-  }
+    } while(tmp != inicio);
   return NULL;
 }
 
