@@ -15,6 +15,7 @@ NodoUsuario* ListaUsuarios::buscar(std::string s){
     } while(tmp != inicio);
   return NULL;
 }
+}
 
 void ListaUsuarios::insertarAlInicio(Usuario u){
   NodoUsuario* nuevo = new NodoUsuario(u);

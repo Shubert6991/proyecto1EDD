@@ -14,6 +14,7 @@ NodoTratamiento* ListaTratamientos::buscar(std::string s){
       tmp = tmp->getSiguiente();
     } while(tmp != inicio);
   return NULL;
+  }
 }
 
 void ListaTratamientos::insertarAlInicio(Tratamiento t){
@@ -21,11 +22,13 @@ void ListaTratamientos::insertarAlInicio(Tratamiento t){
   if(estaVacia()){
     inicio = fin = nuevo;
     fin -> setSiguiente(inicio);
+    inicio -> setAnterior(fin);
   } else {
     nuevo -> setSiguiente(inicio);
     inicio -> setAnterior(nuevo);
     inicio = nuevo;
     fin -> setSiguiente(inicio);
+    inicio -> setAnterior(fin);
   }
 }
 
@@ -34,11 +37,13 @@ void  ListaTratamientos::insertarAlFinal(Tratamiento t) {
   if(estaVacia()){
     inicio=fin=nuevo;
     fin -> setSiguiente(inicio);
+    inicio -> setAnterior(fin);
   } else {
     nuevo -> setAnterior(fin);
     fin -> setSiguiente(nuevo);
     fin = nuevo;
     fin -> setSiguiente(inicio);
+    inicio -> setAnterior(fin);
   }
 }
 
