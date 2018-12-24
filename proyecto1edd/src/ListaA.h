@@ -13,5 +13,9 @@ public:
   void insertarAlInicio(Anio a);
   void insertarAlFinal(Anio a);
   void insertarOrdenado(Anio a);
+  Anio getYear();
+  bool estaVacia();
+  std::list<Anio> getList();
+  
 };
 #endif
