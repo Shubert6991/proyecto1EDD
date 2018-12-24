@@ -16,5 +16,10 @@ public:
   NodoMes(Mes m);
   NodoMes(Mes m,NodoMes* abj);
   //metodos
+  Mes getMes();
+  NodoMes* getAbajo();
+  void setAbajo(NodoMes *abj);
+  std::string getNombre();
+  int getValor();
 }
 #endif //NODOMES_H
