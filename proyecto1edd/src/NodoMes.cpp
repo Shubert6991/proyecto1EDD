@@ -21,3 +21,11 @@ NodoMes* NodoMes::getAbajo(){
 void NodoMes::setAbajo(NodoMes *abj){
   abajo = abj;
 }
+
+std::string NodoMes::getNombre(){
+  return mes.nombre;
+}
+
+int NodoMes::getValor(){
+  return mes.valor;
+}

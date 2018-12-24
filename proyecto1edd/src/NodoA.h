@@ -24,5 +24,5 @@ public:
   void setAnterior(NodoA *ant);
   void setAbajo(NodoMes *abj);
   int getValor();
-}
+};
 #endif //NODOA_H
