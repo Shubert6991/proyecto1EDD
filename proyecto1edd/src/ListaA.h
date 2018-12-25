@@ -13,7 +13,7 @@ public:
   void insertarAlInicio(Anio a);
   void insertarAlFinal(Anio a);
   void insertarOrdenado(Anio a);
-  Anio getYear();
+  Anio getYear(str::string y);
   bool estaVacia();
   std::list<Anio> getList();
   
