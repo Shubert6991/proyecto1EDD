@@ -18,8 +18,16 @@ NodoMes* NodoMes::getAbajo(){
   return abajo;
 }
 
+NodoSemana* NodoMes::getDerecha(){
+  return derecha;
+}
+
 void NodoMes::setAbajo(NodoMes *abj){
   abajo = abj;
+}
+
+void NodoMes::setDerecha(NodoSemana *der){
+  derecha = der;
 }
 
 std::string NodoMes::getNombre(){
