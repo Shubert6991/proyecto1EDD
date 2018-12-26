@@ -94,3 +94,16 @@ std::list<Hora> ListaHoras::getList(){
 
     return lista;
 }
+
+int ListaHoras::getIndex(NodoHora* nh){
+  NodoHora* ini = inicio;
+  int x = 0;
+  while (ini!=NULL) {
+      if(nh==ini){
+          return x;
+      }
+      ini = ini->getAbajo();
+      x++;
+  }
+  return x;
+}

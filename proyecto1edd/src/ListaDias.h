@@ -4,7 +4,7 @@
 #include <list>
 #include "NodoDia.h"
 
-class ListaDias{  
+class ListaDias{
 public:
   NodoDia* buscar(int s);
   NodoDia *inicio,*fin;
@@ -15,5 +15,6 @@ public:
   Dia getDia(int d);
   bool estaVacia();
   std::list<Dia> getList();
+  int getIndex(NodoDia* nd);
 };
 #endif

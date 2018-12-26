@@ -13,7 +13,7 @@ public:
   ListaDias* columna;
   ListaHoras* fila;
   Matriz(ListaDias* col,ListaHoras* fil);
-  void insertar(TratamientoMatriz t);
+  void insertar(TratamientoMatriz t,Dia d,Hora h);
   Tratamiento getTratamiento(int dia,float hora);
   bool estaVacia();
   bool existeDia(int dia);

@@ -15,5 +15,6 @@ public:
   Hora getHora(float ini);
   bool estaVacia();
   std::list<Hora> getList();
+  int getIndex(NodoHora* nh);
 };
 #endif

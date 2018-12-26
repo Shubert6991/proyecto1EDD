@@ -7,6 +7,8 @@ struct TratamientoMatriz{
   std::string codTrat;
   std::string codUsuario;
   bool estado;
+  int indexDia;
+  int indexHora;
 };
 
 class NodoMatriz {

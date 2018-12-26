@@ -94,3 +94,16 @@ std::list<Dia> ListaDias::getList(){
 
     return lista;
 }
+
+int ListaHoras::getIndex(NodoDia* nd){
+  NodoDia* ini = inicio;
+  int x = 0;
+  while (ini!=NULL) {
+      if(nd==ini){
+          return x;
+      }
+      ini = ini->getDerecha();
+      x++;
+  }
+  return x;
+}
