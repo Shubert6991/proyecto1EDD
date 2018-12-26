@@ -1,11 +1,11 @@
 #include "NodoMatriz.h"
 
-NodoMatriz::NodoMatriz(Tratamiento t){
+NodoMatriz::NodoMatriz(TratamientoMatriz t){
   trat = t;
   arriba = abajo = izquierda = derecha = NULL;
 }
 
-NodoMatriz::NodoMatriz(Tratamiento t,NodoMatriz *arr,NodoMatriz *abj,NodoMatriz *izq,NodoMatriz *der){
+NodoMatriz::NodoMatriz(TratamientoMatriz t,NodoMatriz *arr,NodoMatriz *abj,NodoMatriz *izq,NodoMatriz *der){
   trat = t;
   arriba = arr;
   abajo = abj;

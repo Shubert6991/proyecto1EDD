@@ -2,7 +2,7 @@
 #define NODOMATRIZ_H
 #include <string>
 
-struct Tratamiento{
+struct TratamientoMatriz{
   std::string transaccion;
   std::string codTrat;
   std::string codUsuario;
@@ -11,14 +11,14 @@ struct Tratamiento{
 
 class NodoMatriz {
 protected:
-  Tratamiento trat;
+  TratamientoMatriz trat;
   NodoMatriz *arriba,*abajo,*izquierda,*derecha;
 public:
   //constructor
-  NodoMatriz(Tratamiento t);
-  NodoMatriz(Tratamiento t,NodoMatriz *arr,NodoMatriz *abj,NodoMatriz *izq, NodoMatriz *der);
+  NodoMatriz(TratamientoMatriz t);
+  NodoMatriz(TratamientoMatriz t,NodoMatriz *arr,NodoMatriz *abj,NodoMatriz *izq, NodoMatriz *der);
   //metodos
-  Tratamiento getTratamiento();
+  TratamientoMatriz getTratamiento();
   NodoMatriz* getArriba();
   NodoMatriz* getAbajo();
   NodoMatriz* getIzquierda();
