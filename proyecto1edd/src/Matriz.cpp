@@ -28,6 +28,15 @@ void insertar(TratamientoMatriz t,Dia d,Hora h){
   if(existeDia(d.valor)){
     if(existeHora(h.inicio)){
       //insertar
+      //obtener indices
+      int iCol = columna.getIndex(d.valor);
+      int iFil = fila.getIndex(h.inicio);
+      //crear nuevo nodo
+      NodoMatriz nuevo = new NodoMatriz(t);
+      nuevo.setIndexCol(iCol);
+      nuevo.setIndexFila(iFil);
+      //ordenar por indices
+      
     }
     //crear hora
   }
