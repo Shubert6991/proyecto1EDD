@@ -64,3 +64,19 @@ std::string NodoMatriz::getCodUsuario(){
 bool NodoMatriz::getEstado(){
   return trat.estado;
 }
+
+int NodoMatriz::getIndexCol(){
+  return indexDia;
+}
+
+int NodoMatriz::getIndexFila(){
+  return indexHora;
+}
+
+void NodoMatriz::setIndexCol(int dia){
+  indexDia = dia;
+}
+
+void NodoMatriz::setIndexCol(int hora){
+  indexHora = hora;
+}

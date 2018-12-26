@@ -33,5 +33,9 @@ public:
   std::string getCodTratamiento();
   std::string getCodUsuario();
   bool getEstado();
+  int getIndexCol();
+  int getIndexFila();
+  void setIndexCol(int dia);
+  void setIndexFila(int hora);
 }
 #endif
