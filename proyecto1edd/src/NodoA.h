@@ -1,6 +1,7 @@
 #ifndef NODOA_H
 #define NODOA_H
 #include <string>
+#include "NodoMes.h"
 
 struct Anio {
   int valor;
@@ -14,7 +15,7 @@ protected:
 public:
   //constructor
   NodoA(Anio a);
-  NodoA(Anio a,NodoA *sig,NodoA *ant,NodoA *abj);
+  NodoA(Anio a,NodoA *sig,NodoA *ant,NodoMes *abj);
   //metodos
   Anio getAnio();
   NodoA* getSiguiente();

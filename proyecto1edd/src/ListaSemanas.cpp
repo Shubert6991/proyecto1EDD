@@ -1,10 +1,10 @@
-include "ListaSemanas.h"
+#include "ListaSemanas.h"
 
 ListaSemanas::ListaSemanas(){
   inicio = fin = NULL;
 }
 
-NodoSemana* ListaSemanas::buscar(std::string s){
+NodoSemana* ListaSemanas::buscar(int s){
   NodoSemana* tmp = inicio;
   while (tmp!=NULL) {
       if(tmp->getNumero()==s){
@@ -61,12 +61,13 @@ void ListaSemanas::insertarOrdenado(Semana s){
         }
         //insertar el nuevo nodo antes de tmp
         tmp2 -> setAbajo(nuevo);
-        nuevo -> setSiguiente(tmp);
+        nuevo -> setAbajo(tmp);
     }
+  }
 }
 
-Semana ListaSemanas::getSemana(str::string s){
-  Semana result = {"",""};
+Semana ListaSemanas::getSemana(int s){
+  Semana result = {0,0,0};
   NodoSemana* search = buscar(s);
   if(search!=NULL){
     return search -> getSemana();

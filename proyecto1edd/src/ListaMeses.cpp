@@ -1,10 +1,10 @@
-include "ListaMeses.h"
+#include "ListaMeses.h"
 
 ListaMeses::ListaMeses(){
   inicio = fin = NULL;
 }
 
-NodoMes* ListaMeses::buscar(std::string s){
+NodoMes* ListaMeses::buscar(int s){
   NodoMes* tmp = inicio;
   while (tmp!=NULL) {
       if(tmp->getValor()==s){
@@ -44,11 +44,11 @@ void ListaMeses::insertarOrdenado(Mes m){
     } else{
       //si es menor que el primero
       if(m.valor < inicio -> getValor()){
-        insertarAlInicio(a);
+        insertarAlInicio(m);
       }
       //si es mayor que el ultimo
       else if(m.valor > fin -> getValor()){
-        insertarAlFinal(a);
+        insertarAlFinal(m);
       }
       //si va en medio
       else {
@@ -61,12 +61,13 @@ void ListaMeses::insertarOrdenado(Mes m){
         }
         //insertar el nuevo nodo antes de tmp
         tmp2 -> setAbajo(nuevo);
-        nuevo -> setSiguiente(tmp);
+        nuevo -> setAbajo(tmp);
     }
+  }
 }
 
-Mes ListaMeses::getMes(str::string m){
-  Mes result = {"",""};
+Mes ListaMeses::getMes(int m){
+  Mes result = {"",0};
   NodoMes* search = buscar(m);
   if(search!=NULL){
     return search -> getMes();

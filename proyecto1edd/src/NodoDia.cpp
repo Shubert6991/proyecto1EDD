@@ -2,7 +2,8 @@
 
 NodoDia::NodoDia(Dia d){
   dia = d;
-  derecha = izquierda = abajo = NULL;
+  derecha = izquierda = NULL;
+  abajo = NULL;
 }
 
 NodoDia::NodoDia(Dia d,NodoDia* der,NodoDia* izq,NodoMatriz* abj){

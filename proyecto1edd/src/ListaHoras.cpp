@@ -1,4 +1,4 @@
-include "ListaHoras.h"
+#include "ListaHoras.h"
 
 ListaHoras::ListaHoras(){
   inicio = fin = NULL;
@@ -49,7 +49,7 @@ void ListaHoras::insertarOrdenado(Hora h){
         insertarAlInicio(h);
       }
       //si es mayor que el ultimo
-      else if(h.valor > fin -> getInicio()){
+      else if(h.inicio > fin -> getInicio()){
         insertarAlFinal(h);
       }
       //si va en medio
@@ -69,7 +69,7 @@ void ListaHoras::insertarOrdenado(Hora h){
 }
 
 Hora ListaHoras::getHora(float ini){
-  Hora result = {"",""};
+  Hora result = {0,0};
   NodoHora* search = buscar(ini);
   if(search!=NULL){
     return search -> getHora();

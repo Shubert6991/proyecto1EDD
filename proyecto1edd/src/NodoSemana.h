@@ -1,6 +1,7 @@
 #ifndef NODOSEMANA_H
 #define NODOSEMANA_H
 #include <string>
+#include "Matriz.h"
 
 struct Semana{
   int numero;

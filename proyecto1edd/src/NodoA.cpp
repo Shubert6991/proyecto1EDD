@@ -7,8 +7,8 @@ NodoA::NodoA(Anio a){
   abajo = NULL;
 }
 
-NodoA::NodoA(Anio a,NodoA *sig,NodoA *ant,NodoA *abj){
-  anio = a
+NodoA::NodoA(Anio a,NodoA *sig,NodoA *ant,NodoMes *abj){
+  anio = a;
   siguiente = sig;
   anterior = ant;
   abajo = abj;

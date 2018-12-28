@@ -6,14 +6,14 @@
 
 class ListaMeses{
 private:
-  NodoMes* buscar(std::string s);
+  NodoMes* buscar(int s);
 public:
   NodoMes *inicio,*fin;
-  ListaA();
+  ListaMeses();
   void insertarAlInicio(Mes m);
   void insertarAlFinal(Mes m);
   void insertarOrdenado(Mes m);
-  Mes getMes(str::string m);
+  Mes getMes(int m);
   bool estaVacia();
   std::list<Mes> getList();
 };

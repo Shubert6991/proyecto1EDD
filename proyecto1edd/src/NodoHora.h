@@ -1,7 +1,7 @@
 #ifndef NODOHORA_H
 #define NODOHORA_H
 #include <string>
-
+#include "NodoMatriz.h"
 struct Hora{
   float inicio;
   float fin;

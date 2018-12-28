@@ -5,14 +5,45 @@ Matriz::Matriz(ListaDias* col,ListaHoras* fil){
   fila = fil;
 }
 
+bool Matriz::estaVacia(){
+  NodoDia* tmpCol = columna -> inicio;
+  NodoMatriz* tmpMat = tmpCol -> getAbajo();
+  int cont = 0;
+  while (tmpCol != NULL){
+    tmpMat = tmpCol ->getAbajo();
+    while (tmpMat != NULL) {
+      cont++;
+      tmpMat = tmpMat -> getAbajo();
+    }
+    tmpCol = tmpCol -> getDerecha();
+  }
+  if (cont != 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+bool Matriz::existeDia(int dia){
+  NodoDia* nodo = columna -> buscar(dia);
+  if(nodo != NULL) return true;
+  else return false;
+}
+
+bool Matriz::existeHora(float hora){
+  NodoHora* nodo = fila -> buscar(hora);
+  if(nodo != NULL) return true;
+  else return false;
+}
+
 NodoMatriz* Matriz::buscar(int dia,float hora){
 //existeDia y existeHora
 if(existeDia(dia) && existeHora(hora)){
-  NodoDia* col = columna.buscar(dia);
-  NodoHora* f = fila.buscar(hora);
+  NodoDia* col = columna -> buscar(dia);
+  NodoHora* f = fila -> buscar(hora);
   NodoMatriz* tmp = col -> getAbajo();
-  int iCol = columna.getIndex(col);
-  int iFil = fila.getIndex(f);
+  int iCol = columna -> getIndex(col);
+  int iFil = fila -> getIndex(f);
   while(tmp != NULL){
     if(tmp -> getIndexFila() == iFil){
       return tmp;
@@ -27,10 +58,10 @@ if(existeDia(dia) && existeHora(hora)){
 NodoMatriz* Matriz::buscarIndex(int c,int f){
   //buscar col
   NodoMatriz* tmp;
-  if(!columna.estaVacia()){
-    NodoDia* col = columna.inicio;
+  if(!columna -> estaVacia()){
+    NodoDia* col = columna -> inicio;
     while (col != NULL) {
-      if(col -> getIndex() == c){
+      if(columna -> getIndex(col) == c){
         tmp = col -> getAbajo();
         //buscar fila
         while(tmp != NULL){
@@ -48,21 +79,21 @@ NodoMatriz* Matriz::buscarIndex(int c,int f){
   return NULL;
 }
 
-void insertar(TratamientoMatriz t,Dia d,Hora h){
+void Matriz::insertar(TratamientoMatriz t,Dia d,Hora h){
   if(existeDia(d.valor)){
     if(existeHora(h.inicio)){
       //insertar
+      //obtener Nodos
+      NodoDia* col = columna -> buscar(d.valor);
+      NodoHora* fil = fila -> buscar(h.inicio);
+      NodoMatriz* tmp= col -> getAbajo();
       //obtener indices
-      int iCol = columna.getIndex(d.valor);
-      int iFil = fila.getIndex(h.inicio);
+      int iCol = columna -> getIndex(col);
+      int iFil = fila -> getIndex(fil);
       //crear nuevo nodo
       NodoMatriz* nuevo = new NodoMatriz(t);
-      nuevo.setIndexCol(iCol);
-      nuevo.setIndexFila(iFil);
-      //obtener Nodos
-      NodoDia* col = columna.buscar(d.valor);
-      NodoHora* fil = fila.buscar(h.inicio);
-      NodoMatriz* tmp= col -> getAbajo();
+      nuevo -> setIndexCol(iCol);
+      nuevo -> setIndexFila(iFil);
       //obtener anteriores y siguientes
       NodoDia* colAnt = col -> getIzquierda();
       NodoMatriz* nodoAnt;
@@ -71,13 +102,14 @@ void insertar(TratamientoMatriz t,Dia d,Hora h){
       //ordenar por indices
       //si no hay ninguno
       if(tmp == NULL) {
-        columna.setAbajo(nuevo);
+        col-> setAbajo(nuevo);
         //si es la primera columna
         if(iCol == 0){
           fil -> setDerecha(nuevo);
           //si tiene nodos a su derecha
+          NodoMatriz* tmpSig = colSig -> getAbajo();
           while(colSig != NULL){
-            NodoMatriz* tmpSig = colSig -> getAbajo();
+            tmpSig = colSig -> getAbajo();
             while(tmpSig != NULL){
               if(tmpSig -> getIndexFila() == iFil){
                 nodoSig = tmpSig;
@@ -94,8 +126,9 @@ void insertar(TratamientoMatriz t,Dia d,Hora h){
         }
         else {
           //buscar si existe nodo matriz anterior
-          while (colAnt != NULL) {
             NodoMatriz* tmpAnt = colAnt -> getAbajo();
+          while (colAnt != NULL) {
+            tmpAnt = colAnt -> getAbajo();
             while (tmpAnt != NULL) {
               if(tmpAnt -> getIndexFila()==iFil){
                 nodoAnt = tmpAnt;
@@ -109,8 +142,9 @@ void insertar(TratamientoMatriz t,Dia d,Hora h){
             nuevo -> setIzquierda(nodoAnt);
             nodoAnt -> setDerecha(nuevo);
           }
+          NodoMatriz* tmpSig = colSig -> getAbajo();
           while(colSig != NULL){
-            NodoMatriz* tmpSig = colSig -> getAbajo();
+            tmpSig = colSig -> getAbajo();
             while(tmpSig != NULL){
               if(tmpSig -> getIndexFila() == iFil){
                 nodoSig = tmpSig;
@@ -129,15 +163,16 @@ void insertar(TratamientoMatriz t,Dia d,Hora h){
         //si es menor al primero
         if(nuevo -> getIndexFila() < tmp -> getIndexFila()){
           //insetar al inicio
-          columna -> setAbajo(nuevo);
+          col -> setAbajo(nuevo);
           nuevo -> setAbajo(tmp);
           tmp -> setArriba(nuevo);
           //si es la primera columna
           if(iCol == 0){
             fil -> setDerecha(nuevo);
             //si tiene nodos a su derecha
+            NodoMatriz* tmpSig = colSig -> getAbajo();
             while(colSig != NULL){
-              NodoMatriz* tmpSig = colSig -> getAbajo();
+              tmpSig = colSig -> getAbajo();
               while(tmpSig != NULL){
                 if(tmpSig -> getIndexFila() == iFil){
                   nodoSig = tmpSig;
@@ -154,8 +189,9 @@ void insertar(TratamientoMatriz t,Dia d,Hora h){
           }
           else {
             //buscar si existe nodo matriz anterior
+            NodoMatriz* tmpAnt = colAnt -> getAbajo();
             while (colAnt != NULL) {
-              NodoMatriz* tmpAnt = colAnt -> getAbajo();
+              tmpAnt = colAnt -> getAbajo();
               while (tmpAnt != NULL) {
                 if(tmpAnt -> getIndexFila()==iFil){
                   nodoAnt = tmpAnt;
@@ -169,8 +205,9 @@ void insertar(TratamientoMatriz t,Dia d,Hora h){
               nuevo -> setIzquierda(nodoAnt);
               nodoAnt -> setDerecha(nuevo);
             }
+            NodoMatriz* tmpSig = colSig -> getAbajo();
             while(colSig != NULL){
-              NodoMatriz* tmpSig = colSig -> getAbajo();
+              tmpSig = colSig -> getAbajo();
               while(tmpSig != NULL){
                 if(tmpSig -> getIndexFila() == iFil){
                   nodoSig = tmpSig;
@@ -194,8 +231,9 @@ void insertar(TratamientoMatriz t,Dia d,Hora h){
           if(iCol == 0){
             fil -> setDerecha(nuevo);
             //si tiene nodos a su derecha
+            NodoMatriz* tmpSig = colSig -> getAbajo();
             while(colSig != NULL){
-              NodoMatriz* tmpSig = colSig -> getAbajo();
+              tmpSig = colSig -> getAbajo();
               while(tmpSig != NULL){
                 if(tmpSig -> getIndexFila() == iFil){
                   nodoSig = tmpSig;
@@ -212,8 +250,9 @@ void insertar(TratamientoMatriz t,Dia d,Hora h){
           }
           else {
             //buscar si existe nodo matriz anterior
+            NodoMatriz* tmpAnt = colAnt -> getAbajo();
             while (colAnt != NULL) {
-              NodoMatriz* tmpAnt = colAnt -> getAbajo();
+              tmpAnt = colAnt -> getAbajo();
               while (tmpAnt != NULL) {
                 if(tmpAnt -> getIndexFila()==iFil){
                   nodoAnt = tmpAnt;
@@ -227,8 +266,9 @@ void insertar(TratamientoMatriz t,Dia d,Hora h){
               nuevo -> setIzquierda(nodoAnt);
               nodoAnt -> setDerecha(nuevo);
             }
+            NodoMatriz* tmpSig = colSig -> getAbajo();
             while(colSig != NULL){
-              NodoMatriz* tmpSig = colSig -> getAbajo();
+              tmpSig = colSig -> getAbajo();
               while(tmpSig != NULL){
                 if(tmpSig -> getIndexFila() == iFil){
                   nodoSig = tmpSig;
@@ -256,8 +296,9 @@ void insertar(TratamientoMatriz t,Dia d,Hora h){
           if(iCol == 0){
             fil -> setDerecha(nuevo);
             //si tiene nodos a su derecha
+            NodoMatriz* tmpSig = colSig -> getAbajo();
             while(colSig != NULL){
-              NodoMatriz* tmpSig = colSig -> getAbajo();
+              tmpSig = colSig -> getAbajo();
               while(tmpSig != NULL){
                 if(tmpSig -> getIndexFila() == iFil){
                   nodoSig = tmpSig;
@@ -274,8 +315,9 @@ void insertar(TratamientoMatriz t,Dia d,Hora h){
           }
           else {
             //buscar si existe nodo matriz anterior
+            NodoMatriz* tmpAnt = colAnt -> getAbajo();
             while (colAnt != NULL) {
-              NodoMatriz* tmpAnt = colAnt -> getAbajo();
+              tmpAnt = colAnt -> getAbajo();
               while (tmpAnt != NULL) {
                 if(tmpAnt -> getIndexFila()==iFil){
                   nodoAnt = tmpAnt;
@@ -289,8 +331,9 @@ void insertar(TratamientoMatriz t,Dia d,Hora h){
               nuevo -> setIzquierda(nodoAnt);
               nodoAnt -> setDerecha(nuevo);
             }
+            NodoMatriz* tmpSig = colSig -> getAbajo();
             while(colSig != NULL){
-              NodoMatriz* tmpSig = colSig -> getAbajo();
+              tmpSig = colSig -> getAbajo();
               while(tmpSig != NULL){
                 if(tmpSig -> getIndexFila() == iFil){
                   nodoSig = tmpSig;
@@ -323,38 +366,7 @@ TratamientoMatriz Matriz::getTratamiento(int dia,float hora){
 
 }
 
-bool Matriz::estaVacia(){
-  NodoDia* tmpCol = columna -> inicio;
-  NodoMatriz* tmpMat = tmpCol -> getAbajo();
-  int cont = 0;
-  while (tmpCol != NULL){
-    tmpMat = tmpCol ->getAbajo();
-    while (tmpMat != NULL) {
-      cont++;
-      tmpMat = tmpMat -> getAbajo();
-    }
-    tmpCol = tmpCol -> getDerecha();
-  }
-  if (cont != 0) {
-    return false;
-  } else {
-    return true;
-  }
-}
-
-bool Matriz::existeDia(int dia){
-  NodoDia* nodo = columna -> buscar(dia);
-  if(nodo != NULL) return true;
-  else return false;
-}
-
-bool Matriz::existeHora(float hora){
-  NodoHora* nodo = fila -> buscar(hora);
-  if(nodo != NULL) return true;
-  else return false;
-}
-
-std::list<NodoMatriz> getList(){
+std::list<NodoMatriz> Matriz::getList(){
   std::list<NodoMatriz> lista;
   NodoDia* tmpCol = columna -> inicio;
   NodoMatriz* tmp = tmpCol -> getAbajo();
@@ -380,6 +392,7 @@ void Matriz::eliminarNodo(NodoMatriz* e){
   e -> setAbajo(NULL);
   e -> setIzquierda(NULL);
   e -> setDerecha(NULL);
+  //nodos en la misma columna
   if(arr != NULL && abj != NULL){
     arr -> setAbajo(abj);
     abj -> setArriba(arr);
@@ -387,7 +400,27 @@ void Matriz::eliminarNodo(NodoMatriz* e){
     arr -> setAbajo(NULL);
   } else {
     //columna apunta a nodo abajo
+    NodoDia* col = columna -> inicio;
+    NodoMatriz* tmp = col -> getAbajo();
+    while (tmp != e && col != NULL){
+      col = col -> getDerecha();
+      tmp = col -> getAbajo();
+    }
+    col -> setAbajo(abj);
   }
-
-
+  //nodos misma fila
+  if(izq != NULL && der !=NULL){
+    izq ->  setDerecha(der);
+    der -> setIzquierda(izq);
+  } else if(izq != NULL){
+    izq -> setDerecha(NULL);
+  } else {
+    NodoHora* fil = fila -> inicio;
+    NodoMatriz* tmp = fil -> getDerecha();
+    while(tmp != e && fil != NULL){
+      fil = fil -> getAbajo();
+      tmp = fil -> getDerecha();
+    }
+    fil -> setDerecha(der);
+  }
 }

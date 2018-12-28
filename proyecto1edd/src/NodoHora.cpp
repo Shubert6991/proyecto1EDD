@@ -2,7 +2,8 @@
 
 NodoHora::NodoHora(Hora h){
   hora = h;
-  abajo = arriba = derecha = NULL;
+  abajo = arriba = NULL;
+  derecha = NULL;
 }
 
 NodoHora::NodoHora(Hora h,NodoHora *abj,NodoHora *arr,NodoMatriz *der){

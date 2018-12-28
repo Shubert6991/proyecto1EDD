@@ -1,6 +1,7 @@
 #ifndef NODODIA_H
 #define NODODIA_H
 #include <string>
+#include "NodoMatriz.h"
 
 struct Dia{
   std::string nombre;

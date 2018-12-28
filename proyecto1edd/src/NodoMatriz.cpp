@@ -13,7 +13,7 @@ NodoMatriz::NodoMatriz(TratamientoMatriz t,NodoMatriz *arr,NodoMatriz *abj,NodoM
   derecha = der;
 }
 
-Tratamiento NodoMatriz::getTratamiento(){
+TratamientoMatriz NodoMatriz::getTratamiento(){
   return trat;
 }
 
@@ -66,17 +66,17 @@ bool NodoMatriz::getEstado(){
 }
 
 int NodoMatriz::getIndexCol(){
-  return indexDia;
+  return trat.indexDia;
 }
 
 int NodoMatriz::getIndexFila(){
-  return indexHora;
+  return trat.indexHora;
 }
 
 void NodoMatriz::setIndexCol(int dia){
-  indexDia = dia;
+  trat.indexDia = dia;
 }
 
-void NodoMatriz::setIndexCol(int hora){
-  indexHora = hora;
+void NodoMatriz::setIndexFila(int hora){
+  trat.indexHora = hora;
 }

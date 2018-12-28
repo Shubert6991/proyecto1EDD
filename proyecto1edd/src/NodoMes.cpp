@@ -5,9 +5,10 @@ NodoMes::NodoMes(Mes m){
   abajo = NULL;
 }
 
-NodoMes::NodoMes(Mes m,NodoMes* abj){
+NodoMes::NodoMes(Mes m,NodoMes* abj,NodoSemana* der){
   mes = m;
   abajo = abj;
+  derecha = der;
 }
 
 Mes NodoMes::getMes(){

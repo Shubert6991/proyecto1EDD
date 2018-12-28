@@ -6,16 +6,16 @@
 
 class ListaSemanas{
 private:
-  NodoSemana* buscar(std::string s);
+  NodoSemana* buscar(int s);
 public:
   NodoSemana *inicio, *fin;
   ListaSemanas();
   void insertarAlInicio(Semana s);
   void insertarAlFinal(Semana s);
   void insertarOrdenado(Semana s);
-  Semana getSemana(std::string s);
+  Semana getSemana(int s);
   bool estaVacia();
   std::list<Semana> getList();
-}
+};
 
 #endif

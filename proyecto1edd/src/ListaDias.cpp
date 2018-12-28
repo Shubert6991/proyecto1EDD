@@ -1,4 +1,4 @@
-include "ListaDias.h"
+#include "ListaDias.h"
 
 ListaDias::ListaDias(){
   inicio = fin = NULL;
@@ -69,7 +69,7 @@ void ListaDias::insertarOrdenado(Dia d){
 }
 
 Dia ListaDias::getDia(int d){
-  Dia result = {"",""};
+  Dia result = {"",};
   NodoDia* search = buscar(d);
   if(search!=NULL){
     return search -> getDia();
@@ -77,7 +77,7 @@ Dia ListaDias::getDia(int d){
   return result;
 }
 
-bool ListaA::estaVacia(){
+bool ListaDias::estaVacia(){
   if (inicio == NULL) {
     return true;
   }
@@ -88,14 +88,14 @@ std::list<Dia> ListaDias::getList(){
   std::list<Dia> lista;
     NodoDia* tmp = inicio;
     while (tmp != NULL) {
-      lista.push_back(tmp -> getAnio());
+      lista.push_back(tmp -> getDia());
       tmp = tmp -> getDerecha();
     }
 
     return lista;
 }
 
-int ListaHoras::getIndex(NodoDia* nd){
+int ListaDias::getIndex(NodoDia* nd){
   NodoDia* ini = inicio;
   int x = 0;
   while (ini!=NULL) {

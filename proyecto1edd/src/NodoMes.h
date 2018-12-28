@@ -1,6 +1,7 @@
 #ifndef NODOMES_H
 #define NODOMES_H
 #include <string>
+#include "NodoSemana.h"
 
 struct Mes{
   std::string nombre;

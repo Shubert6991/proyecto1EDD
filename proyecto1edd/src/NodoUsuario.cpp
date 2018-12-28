@@ -4,14 +4,16 @@ std::string NodoUsuario::autogenerar()
   static const std::string charList = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   srand(time(0));
   std::string alphanumeric = "";
-  for(int i = 0; i < 8; i++) {
+  for(int i = 0; i < 14; i++) {
     alphanumeric += charList [rand() % charList.size()];
   }
 return alphanumeric;
 }
 
 NodoUsuario::NodoUsuario(Usuario u){
-  u.identificador = autogenerar();
+  if(u.identificador ==""){
+    u.identificador = autogenerar();
+  }
   user = u;
   siguiente = NULL;
 }

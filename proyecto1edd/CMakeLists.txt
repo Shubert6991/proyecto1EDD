@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.6)
 
 project (proyecto1edd CXX)
 
-set(PROYECTO1EDD_HEADERS proyecto1EDD.h NodoUsuario.h)
+set(PROYECTO1EDD_HEADERS proyecto1EDD.h NodoA.h NodoDia.h NodoHora.h NodoMatriz.h NodoMes.h NodoSemana.h NodoTratamiento.h NodoUsuario.h)
 
 set(PROJECT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(PROYECTO1EDD_CODEGEN_DIR "${PROJECT_BINARY_DIR}/codegen")

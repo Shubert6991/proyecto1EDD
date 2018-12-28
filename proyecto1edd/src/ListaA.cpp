@@ -1,10 +1,10 @@
-include "ListaA.h"
+#include "ListaA.h"
 
 ListaA::ListaA(){
   inicio = fin = NULL;
 }
 
-NodoA* ListaA::buscar(std::string s){
+NodoA* ListaA::buscar(int s){
   NodoA* tmp = inicio;
   while (tmp!=NULL) {
       if(tmp->getValor()==s){
@@ -68,8 +68,8 @@ void ListaA::insertarOrdenado(Anio a){
     }
 }
 
-Anio ListaA::getYear(str::string y){
-  Anio result = {"",""};
+Anio ListaA::getYear(int y){
+  Anio result = {};
   NodoA* search = buscar(y);
   if(search!=NULL){
     return search -> getAnio();

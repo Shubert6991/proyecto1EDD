@@ -8,7 +8,7 @@ NodoTratamiento* ListaTratamientos::buscar(std::string s){
   NodoTratamiento* tmp = inicio;
   if(!estaVacia()){
     do {
-      if(tmp->getValor()==s){
+      if(tmp->getIdentificador()==s){
           return tmp;
       }
       tmp = tmp->getSiguiente();

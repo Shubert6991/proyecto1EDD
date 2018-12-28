@@ -37,5 +37,5 @@ public:
   int getIndexFila();
   void setIndexCol(int dia);
   void setIndexFila(int hora);
-}
+};
 #endif
