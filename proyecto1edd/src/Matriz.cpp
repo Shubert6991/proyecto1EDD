@@ -314,6 +314,12 @@ void insertar(TratamientoMatriz t,Dia d,Hora h){
 }
 
 TratamientoMatriz Matriz::getTratamiento(int dia,float hora){
+  TratamientoMatriz result = {"",""};
+    NodoMatriz * search = buscar(dia,hora);
+    if(search!=NULL){
+        return search->getTratamiento();
+    }
+ return result;
 
 }
 
@@ -322,6 +328,7 @@ bool Matriz::estaVacia(){
   NodoMatriz* tmpMat = tmpCol -> getAbajo();
   int cont = 0;
   while (tmpCol != NULL){
+    tmpMat = tmpCol ->getAbajo();
     while (tmpMat != NULL) {
       cont++;
       tmpMat = tmpMat -> getAbajo();
@@ -336,13 +343,51 @@ bool Matriz::estaVacia(){
 }
 
 bool Matriz::existeDia(int dia){
-
+  NodoDia* nodo = columna -> buscar(dia);
+  if(nodo != NULL) return true;
+  else return false;
 }
 
 bool Matriz::existeHora(float hora){
-
+  NodoHora* nodo = fila -> buscar(hora);
+  if(nodo != NULL) return true;
+  else return false;
 }
 
 std::list<NodoMatriz> getList(){
+  std::list<NodoMatriz> lista;
+  NodoDia* tmpCol = columna -> inicio;
+  NodoMatriz* tmp = tmpCol -> getAbajo();
+  if(!estaVacia()){
+    while (tmpCol != NULL) {
+      tmp = tmpCol -> getAbajo();
+      while (tmp != NULL) {
+        lista.push_back(tmp -> getTratamiento());
+        tmp = tmp ->getAbajo();
+      }
+      tmpCol=tmpCol->getDerecha();
+    }
+  }
+  return lista;
+}
+
+void Matriz::eliminarNodo(NodoMatriz* e){
+  NodoMatriz* arr = e -> getArriba();
+  NodoMatriz* abj = e -> getAbajo();
+  NodoMatriz* izq = e -> getIzquierda();
+  NodoMatriz* der = e -> getDerecha();
+  e -> setArriba(NULL);
+  e -> setAbajo(NULL);
+  e -> setIzquierda(NULL);
+  e -> setDerecha(NULL);
+  if(arr != NULL && abj != NULL){
+    arr -> setAbajo(abj);
+    abj -> setArriba(arr);
+  } else if(arr!=NULL){
+    arr -> setAbajo(NULL);
+  } else {
+    //columna apunta a nodo abajo
+  }
+
 
 }
