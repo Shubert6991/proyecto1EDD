@@ -1,0 +1,24 @@
+digraph foo {
+        rankdir=LR;
+        node [shape=record];
+
+	inicio [shape=box];
+        a [label="{ <ant> |<data> 12 | <sig>  }", width=1.2]
+        b [label="{ <ant> |<data> 99 | <sig>  }"];
+        c [label="{ <ant> |<data> 37 | <sig>  }"];
+        fin [shape=box];
+
+	//siguientes
+	inicio -> a:data [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false, arrowsize=1.2];
+        a:sig:c -> b:data [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false, arrowsize=1.2];
+        b:sig:c -> c:data [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+        c:sig:c -> fin      [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+
+
+	//anteriores
+
+	a:ant:c -> inicio [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false, arrowsize=1.2];
+        b:ant:c -> a:data [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false, arrowsize=1.2];
+        c:ant:c -> b:data [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+        fin -> c:data      [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+}
