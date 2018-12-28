@@ -9,12 +9,13 @@
 class Matriz{
 private:
   NodoMatriz* buscar(int dia,float hora);
+  NodoMatriz* buscarIndex(int c,int f);
 public:
   ListaDias* columna;
   ListaHoras* fila;
   Matriz(ListaDias* col,ListaHoras* fil);
   void insertar(TratamientoMatriz t,Dia d,Hora h);
-  Tratamiento getTratamiento(int dia,float hora);
+  TratamientoMatriz getTratamiento(int dia,float hora);
   bool estaVacia();
   bool existeDia(int dia);
   bool existeHora(float hora);
