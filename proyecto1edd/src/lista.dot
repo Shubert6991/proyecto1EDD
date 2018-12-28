@@ -22,3 +22,5 @@ digraph foo {
         c:ant:c -> b:data [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
         fin -> c:data      [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
 }
+
+dot -Tpng -O test.dot
