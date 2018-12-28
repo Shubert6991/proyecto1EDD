@@ -16,7 +16,7 @@ protected:
 public:
   //constructor
   NodoMes(Mes m);
-  NodoMes(Mes m,NodoMes* abj,NodoSemana *der);
+  NodoMes(Mes m,NodoMes* abj,NodoSemana* der);
   //metodos
   Mes getMes();
   NodoMes* getAbajo();
